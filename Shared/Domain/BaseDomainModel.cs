@@ -29,4 +29,16 @@ namespace CarRentalManagementv2.Shared.Domain
   {
     public string Name { get; set; }
   }
+  public class Vehicle : BaseDomainModel { 
+    public int Year { get; set; }
+    public string LiscensePlateNumber { get; set; }
+    public int MakeID { get; set; }
+    public virtual Make Make { get; set; }
+    public int ModelID { get; set; }
+    public virtual Model Model { get; set; }
+    public int ColourID { get; set; }
+    public virtual Colour Colour { get; set; }
+    public virtual List<Booking> Bookings { get; set; }
+
+  }
 }
