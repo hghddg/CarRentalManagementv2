@@ -6,8 +6,27 @@ using System.Threading.Tasks;
 
 namespace CarRentalManagementv2.Shared.Domain
 {
-  class BaseDomainModel
+  public abstract class BaseDomainModel
   {
     public int Id { get; set; }
+
+    public DateTime DateCreated { get; set; }
+
+    public DateTime DateUpdated { get; set; }
+
+    public string CreatedBy { get; set; }
+
+    public string UpdatedBy { get; set; }
+  }
+  public class Make: BaseDomainModel
+  {
+    public string Name { get; set; }
+  }
+  public class Model : BaseDomainModel{
+    public string Name { get; set; }
+  }
+  public class Colour: BaseDomainModel
+  {
+    public string Name { get; set; }
   }
 }
