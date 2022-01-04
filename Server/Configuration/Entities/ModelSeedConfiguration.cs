@@ -51,7 +51,7 @@ namespace CarRentalManagementv2.Server.Configuration.Entities
       );
 
 
-      throw new NotImplementedException();
+      //throw new NotImplementedException();
     }
   }
 }
