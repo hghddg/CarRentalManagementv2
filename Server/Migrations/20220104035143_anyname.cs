@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CarRentalManagementv2.Server.Data.Migrations
+namespace CarRentalManagementv2.Server.Migrations
 {
-    public partial class AddedDefaultDataAndUser : Migration
+    public partial class anyname : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -334,6 +334,54 @@ namespace CarRentalManagementv2.Server.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "ad2bcf0c-20db-474f-8407-5a6b159518ba", "5d0359a3-1936-49af-9ada-5eab7930dd3f", "Administrator", "ADMINISTRATOR" },
+                    { "bd2bcf0c-20db-474f-8407-5a6b159518bb", "0bc9aa6c-17ed-4bb5-9a6f-b1f39add07a9", "User", "USER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "3781efa7-66dc-47f0-860f-e506d04102e4", 0, "2c712b89-e4b4-4c22-8bb6-9fb03590565b", "admin@localhost.com", false, "Admin", "User", false, null, "ADMIN@LOCALHOST.COM", "ADMIN", "AQAAAAEAACcQAAAAEEIVXyvNIW8PRhrluK61FYFx+/OshoWwj9XaD6NtzrhS4n8BInTzvWIigEnSy9YCVQ==", null, false, "850251fc-179b-443b-b5d2-7fd08396883e", false, "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "Colour",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "System", new DateTime(2022, 1, 4, 11, 51, 41, 958, DateTimeKind.Local).AddTicks(2008), new DateTime(2022, 1, 4, 11, 51, 41, 962, DateTimeKind.Local).AddTicks(2850), "Black", "System" },
+                    { 2, "System", new DateTime(2022, 1, 4, 11, 51, 41, 962, DateTimeKind.Local).AddTicks(7309), new DateTime(2022, 1, 4, 11, 51, 41, 962, DateTimeKind.Local).AddTicks(7331), "Blue", "System" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Makes",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "System", new DateTime(2022, 1, 4, 11, 51, 41, 967, DateTimeKind.Local).AddTicks(5081), new DateTime(2022, 1, 4, 11, 51, 41, 967, DateTimeKind.Local).AddTicks(5112), "BMW", "System" },
+                    { 2, "System", new DateTime(2022, 1, 4, 11, 51, 41, 967, DateTimeKind.Local).AddTicks(5127), new DateTime(2022, 1, 4, 11, 51, 41, 967, DateTimeKind.Local).AddTicks(5131), "Toyota", "System" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Models",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "DateUpdated", "Name", "UpdatedBy" },
+                values: new object[,]
+                {
+                    { 1, "System", new DateTime(2022, 1, 4, 11, 51, 41, 969, DateTimeKind.Local).AddTicks(232), new DateTime(2022, 1, 4, 11, 51, 41, 969, DateTimeKind.Local).AddTicks(256), "3 Series", "System" },
+                    { 2, "System", new DateTime(2022, 1, 4, 11, 51, 41, 969, DateTimeKind.Local).AddTicks(273), new DateTime(2022, 1, 4, 11, 51, 41, 969, DateTimeKind.Local).AddTicks(277), "X5", "System" },
+                    { 3, "System", new DateTime(2022, 1, 4, 11, 51, 41, 969, DateTimeKind.Local).AddTicks(283), new DateTime(2022, 1, 4, 11, 51, 41, 969, DateTimeKind.Local).AddTicks(287), "Prius", "System" },
+                    { 4, "System", new DateTime(2022, 1, 4, 11, 51, 41, 969, DateTimeKind.Local).AddTicks(293), new DateTime(2022, 1, 4, 11, 51, 41, 969, DateTimeKind.Local).AddTicks(296), "Rav4", "System" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "ad2bcf0c-20db-474f-8407-5a6b159518ba", "3781efa7-66dc-47f0-860f-e506d04102e4" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

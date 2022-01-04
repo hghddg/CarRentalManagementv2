@@ -1,4 +1,6 @@
-﻿using CarRentalManagementv2.Server.Configuration.Entities;
+﻿using CarRentalManagement.Server.Configurations.Entities;
+using CarRentalManagementv2.Server.Configuration.Entities;
+using CarRentalManagementv2.Server.Configurations.Entities;
 using CarRentalManagementv2.Server.Models;
 using CarRentalManagementv2.Shared.Domain;
 using IdentityServer4.EntityFramework.Options;
@@ -33,7 +35,13 @@ namespace CarRentalManagementv2.Server.Data
       builder.ApplyConfiguration(new ColourSeedConfiguration());
       builder.ApplyConfiguration(new MakeSeedConfiguration());
       builder.ApplyConfiguration(new ModelSeedConfiguration());
-      
+
+
+      builder.ApplyConfiguration(new RoleSeedConfiguration());
+
+      builder.ApplyConfiguration(new UserRoleSeedConfiguration());
+
+      builder.ApplyConfiguration(new UserSeedConfiguration());
     }
 
   }
