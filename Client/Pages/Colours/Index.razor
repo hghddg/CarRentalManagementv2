@@ -1,12 +1,12 @@
-﻿@page "/makes/"
+﻿@page "/Colours/"
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
 
-<h3 class="card-title">Car Makes</h3>
-@if (Makes == null)
+<h3 class="card-title">Car Colours</h3>
+@if (Colours == null)
 {
-<div class ="alert alert-info">Loading Makes.....</div>
+<div class ="alert alert-info">Loading Colours.....</div>
 }
 else
             {
@@ -18,18 +18,18 @@ else
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var make in Makes)
+                        @foreach (var Colour in Colours)
                         { 
                             <tr>
-                                <td>@make.Name</td>
+                                <td>@Colour.Name</td>
                                 <td>
-                                    <a href="/makes/view/@make.Id" class="btn btn-primary">
+                                    <a href="/Colours/view/@Colour.Id" class="btn btn-primary">
                                         <span class="oi oi-book"></span>
                                     </a>
-                                    <a href="/makes/edit/@make.Id" class="btn btn-warning">
+                                    <a href="/Colours/edit/@Colour.Id" class="btn btn-warning">
                                         <span class="oi oi-pencil"></span>
                                     </a>
-                                    <button class="btn btn-danger" @onclick="@(()=>Delete(make.Id))">
+                                    <button class="btn btn-danger" @onclick="@(()=>Delete(Colour.Id))">
                                         <span class="oi oi-delete"></span>
                                     </button>
                                 </td>
@@ -40,18 +40,18 @@ else
             }
 
 @code {
-  private List<Make> Makes;
+  private List<Colour> Colours;
   protected async override Task OnInitializedAsync()
   {
-    Makes = await _client.GetFromJsonAsync<List<Make>>($"{Endpoints.MakesEndpoint}");
+    Colours = await _client.GetFromJsonAsync<List<Colour>>($"{Endpoints.ColoursEndpoint}");
   }
-  async Task Delete(int makeId)
+  async Task Delete(int ColourId)
   {
-    var make = Makes.First(q => q.Id == makeId);
-    var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to Delete {make.Name}?");
+    var Colour = Colours.First(q => q.Id == ColourId);
+    var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to Delete {Colour.Name}?");
     if (confirm)
     {
-      await _client.DeleteAsync($"{Endpoints.MakesEndpoint}/{makeId}");
+      await _client.DeleteAsync($"{Endpoints.ColoursEndpoint}/{ColourId}");
       await OnInitializedAsync();
     }
   }
