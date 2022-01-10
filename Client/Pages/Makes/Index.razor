@@ -1,0 +1,23 @@
+﻿@page "/makes/"
+@inject HttpClient _client
+@inject IJSRuntime js
+@attribute [Authorize]
+
+<h3 class="card-title">Car Makes</h3>
+@code {
+  private List<Make> Makes;
+  protected async override Task OnInitializedAsync()
+  {
+    Makes = await _client.GetFromJsonAsync<List<Make>>("api/makes");
+  }
+  async Task Delete(int makeId)
+  {
+    var make = Makes.First(q => q.Id == makeId);
+    var confirm = await js.InvokeAsync<bool>("Confirm", $"Do you want to Delete {make.Name}?");
+    if (confirm)
+    {
+      await _client.DeleteAsync($"api/makes/{makeId}");
+      await OnInitializedAsync();
+    }
+  }
+}
